@@ -9,6 +9,18 @@ class LinkedList
     @tail = nil
     @size = 0
   end
+
+  def append(value)
+    if @size.zero?
+      @tail = Node.new(value)
+      @head = @tail
+    else
+      @tail.next_node = Node.new(value)
+      @tail = @tail.next_node
+    end
+
+    @size += 1
+  end
 end
 
 class Node
