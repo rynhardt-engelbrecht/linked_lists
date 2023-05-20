@@ -32,6 +32,20 @@ class LinkedList
 
     @size += 1
   end
+
+  def at(index)
+    return nil if index.negative? || index >= @size
+
+    current_node = @head
+    current_index = 0
+
+    while current_index < index
+      current_node = current_node.next_node
+      current_index += 1
+    end
+
+    current_node
+  end
 end
 
 class Node
