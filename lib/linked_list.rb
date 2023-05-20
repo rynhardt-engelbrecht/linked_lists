@@ -89,6 +89,23 @@ class LinkedList
 
     puts 'Value not found.'
   end
+
+  def to_s
+    current_node = @head
+    list_string = String.new('')
+
+    @size.times do |index|
+      list_string << if index == @size - 1
+                       "( #{current_node.value} )"
+                     else
+                       "( #{current_node.value} ) -> "
+                     end
+
+      current_node = current_node.next_node
+    end
+
+    list_string
+  end
 end
 
 class Node
