@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# singly-linked list data structure class
 class LinkedList
 
   attr_accessor :size, :head, :tail
@@ -135,6 +136,7 @@ class LinkedList
   end
 end
 
+# node class for the singly-linked list, each node contains a value and a reference to the next node in the list.
 class Node
   attr_accessor :value, :next_node
 
