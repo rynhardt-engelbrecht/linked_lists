@@ -69,6 +69,8 @@ class LinkedList
     new_tail = at(@size - 2)
     new_tail.next_node = nil
     @tail = new_tail
+
+    node_to_remove
   end
 
   def contains?(value)
