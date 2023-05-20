@@ -65,6 +65,18 @@ class LinkedList
     @size -= 1
     node_to_remove
   end
+
+  def contains?(value)
+    current_node = @head
+
+    @size.times do
+      return true if current_node.value == value
+
+      current_node = current_node.next_node
+    end
+
+    false
+  end
 end
 
 class Node
