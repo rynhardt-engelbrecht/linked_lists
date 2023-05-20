@@ -21,6 +21,17 @@ class LinkedList
 
     @size += 1
   end
+
+  def prepend(value)
+    if @size.zero?
+      @head = Node.new(value)
+      @tail = @head
+    else
+      @head = Node.new(value, head)
+    end
+
+    @size += 1
+  end
 end
 
 class Node
