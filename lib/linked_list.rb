@@ -120,6 +120,19 @@ class LinkedList
     previous_node.next_node = new_node
     @size += 1
   end
+
+  def remove_at(index)
+    return nil if index.negative? || index >= @size
+
+    node_to_remove = at(index)
+    previous_node = at(index - 1)
+
+    previous_node.next_node = node_to_remove.next_node
+    node_to_remove.next_node = nil # Set next_node to nil for immediate memory deallocation
+    @size -= 1
+
+    node_to_remove
+  end
 end
 
 class Node
