@@ -46,6 +46,25 @@ class LinkedList
 
     current_node
   end
+
+  def pop
+    return nil if @size.zero?
+
+    if @size == 1
+      node_to_remove = @head
+      @head = nil
+      @tail = nil
+    else
+      node_to_remove = at(@size - 1)
+
+      new_tail = at(@size - 2)
+      new_tail.next_node = nil
+      @tail = new_tail
+    end
+
+    @size -= 1
+    node_to_remove
+  end
 end
 
 class Node
