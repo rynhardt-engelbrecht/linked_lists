@@ -109,6 +109,17 @@ class LinkedList
 
     list_string
   end
+
+  def insert_at(value, index)
+    return nil if index.negative? || index >= @size
+
+    previous_node = at(index - 1)
+    current_node = at(index)
+    new_node = Node.new(value, current_node)
+
+    previous_node.next_node = new_node
+    @size += 1
+  end
 end
 
 class Node
