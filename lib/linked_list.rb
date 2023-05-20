@@ -50,20 +50,25 @@ class LinkedList
   def pop
     return nil if @size.zero?
 
-    if @size == 1
-      node_to_remove = @head
-      @head = nil
-      @tail = nil
-    else
-      node_to_remove = at(@size - 1)
-
-      new_tail = at(@size - 2)
-      new_tail.next_node = nil
-      @tail = new_tail
-    end
-
+    removed_node = @size == 1 ? pop_single_node : pop_last_node
     @size -= 1
+
+    removed_node
+  end
+
+  def pop_single_node
+    node_to_remove = @head
+    @head = nil
+    @tail = nil
+
     node_to_remove
+  end
+
+  def pop_last_node
+    node_to_remove = at(@size - 1)
+    new_tail = at(@size - 2)
+    new_tail.next_node = nil
+    @tail = new_tail
   end
 
   def contains?(value)
@@ -95,12 +100,8 @@ class LinkedList
     list_string = String.new('')
 
     @size.times do |index|
-      list_string << if index == @size - 1
-                       "( #{current_node.value} )"
-                     else
-                       "( #{current_node.value} ) -> "
-                     end
-
+      list_string << "( #{current_node.value} )"
+      list_string << ' -> ' unless index == @size - 1
       current_node = current_node.next_node
     end
 
