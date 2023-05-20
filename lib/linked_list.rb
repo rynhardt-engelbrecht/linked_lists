@@ -2,7 +2,6 @@
 
 # singly-linked list data structure class
 class LinkedList
-
   attr_accessor :size, :head, :tail
 
   def initialize
