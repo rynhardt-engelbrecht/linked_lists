@@ -125,9 +125,12 @@ class LinkedList
     return nil if index.negative? || index >= @size
 
     node_to_remove = at(index)
-    previous_node = at(index - 1)
+    if index.zero?
+      @head = node_to_remove.next_node
+    else
+      at(index - 1).next_node = node_to_remove.next_node # link node before node_to_remove to node after node_to_remove
+    end
 
-    previous_node.next_node = node_to_remove.next_node
     node_to_remove.next_node = nil # Set next_node to nil for immediate memory deallocation
     @size -= 1
 
